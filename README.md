@@ -7,6 +7,7 @@
 - Data Science Methodology
     - Leverage DSLP repository template/process
     - Tidymodels framework
+    - renv for reproducible tracking of environment requirements
     - Full Reproducibility/Time-Travel (DVC)
 - MLOps Pipeline
     - Modeling Pipeline (DVC)
