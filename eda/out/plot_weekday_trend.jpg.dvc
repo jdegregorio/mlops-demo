@@ -1,0 +1,4 @@
+outs:
+- md5: 9248452f7f53c8e8edb64b19bc25ed47
+  size: 1262196
+  path: plot_weekday_trend.jpg
