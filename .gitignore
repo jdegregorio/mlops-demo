@@ -144,3 +144,6 @@ venv.bak/
 .mypy_cache/
 
 .DS_Store
+
+# Ignore eda in main branch
+eda/
