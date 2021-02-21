@@ -1,0 +1,34 @@
+# Data Dictionary - Processed Data
+
+- date:  Date 
+- volume_total:  Total call volume within day
+- volume_hour_00:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_01:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_02:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_03:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_04:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_05:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_06:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_07:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_08:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_09:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_10:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_11:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_12:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_13:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_14:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_15:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_16:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_17:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_18:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_19:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_20:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_21:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_22:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- volume_hour_23:  Total call volume within nth hour of day (i.e. volume_hour_xx)
+- year:  Year of date
+- month:  Month of date
+- day_month:  Day of month
+- day_week:  Weekday (i.e. monday, tuesday, etc)
+- is_weekend:  Logical, TRUE if date is weekend day
+- is_holiday:  Logical, TRUE if date is a holiday
