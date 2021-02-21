@@ -1,0 +1,4 @@
+outs:
+- md5: c92121df279ac675ee3ca8bffc5818ed
+  size: 182145021
+  path: data_seattle_fire_911.csv
