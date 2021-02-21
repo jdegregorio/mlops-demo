@@ -1,4 +1,4 @@
 outs:
-- md5: 4927091db5f5c0e91e544e55cc1cdac2
-  size: 161014
+- md5: ba67232aeb631448c359fd4d44639d4b
+  size: 161007
   path: df_fire_agg.parquet

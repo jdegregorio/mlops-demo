@@ -59,6 +59,9 @@ df_fire <- df_fire %>%
 df_fire <- df_fire %>%
   arrange(datetime)
 
+# Remove last date (i.e. likely incomplete data)
+df_fire <- df_fire %>%
+  filter(date != max(date))
 
 # DEFINE INCIDENT-LEVEL FEATURES --------------------------------------------
 
