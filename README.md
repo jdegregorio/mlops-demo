@@ -70,7 +70,7 @@ The experimentation/analysis will be evaluated using the following methodology:
     - Test samples - Next n days after split
 - Metrics 
     - Root Mean Squared Error (RSME) calcaulated over each day in the forecast window
-    - Time window weighting decay - being correct about the following day is more important than being correct multiple days into the future, hence there will be a decayed weighting applied to the error metric applied linearly, such that if x is "days from now", then y is `1 - ((x-1) / max(x))`
+    - Time window weighting decay - As an overall model score, a weighted sum of RMSE across the forecast window will be calculated.  The weights will decay linearly as the forecasted date is further from today's date, such that if x is "days from now", then y is `1 - ((x-1) / max(x))`
 
 ## Default Directory Structure
 
