@@ -25,7 +25,7 @@ stages:
     outs:
       - data/metrics/df_eval.rds
       - data/metrics/df_eval_sum.rds
-      - data/metrics/df_eval_sum.html
+      #- data/metrics/df_eval_sum.html
       - data/metrics/plot_mape_lead.jpg
       - data/metrics/plot_mape_year.jpg
       - data/model/model.rds

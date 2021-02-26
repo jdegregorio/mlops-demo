@@ -30,7 +30,7 @@ jobs:
           echo "## MAPE Plots" >> report.md
           cml-publish data/metrics/plot_mape_lead.jpg --md > report.md 
           cml-publish data/metrics/plot_mape_year.jpg --md > report.md 
-          echo "## Error Summary" >> report.md
-          cml-publish data/metrics/df_eval_sum.html --md > report.md 
+          #echo "## Error Summary" >> report.md
+          #cml-publish data/metrics/df_eval_sum.html --md > report.md 
           # Send report
           cml-send-comment report.md

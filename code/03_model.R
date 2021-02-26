@@ -145,11 +145,11 @@ p_mape_year <- df_eval %>%
     y = "Prediction Year"
   )
 
-# Create html report
-df_eval_sum %>% 
-  kbl() %>%
-  kable_styling() %>%
-  save_kable(here("data", "metrics", "df_eval_sum.html"))
+# # Create html report
+# df_eval_sum %>% 
+#   kbl() %>%
+#   kable_styling() %>%
+#   save_kable(here("data", "metrics", "df_eval_sum.html"))
   
 
 # Save metrics
