@@ -1,0 +1,51 @@
+import_data:
+  cmd: Rscript code/01_import_data.R
+  deps:
+  - path: code/01_import_data.R
+    md5: f876aa389f45d939bd1de33ec25f8e74
+    size: 529
+  outs:
+  - path: data/raw/data_seattle_fire_911.csv
+    md5: a51eb0ccdf0eb2c5fc72481312841625
+    size: 182259813
+prepare_data:
+  cmd: Rscript code/02_prepare_data.R
+  deps:
+  - path: code/02_prepare_data.R
+    md5: 3f77f83675a5d09f12fe83c0ce586a67
+    size: 3100
+  - path: data/raw/data_seattle_fire_911.csv
+    md5: a51eb0ccdf0eb2c5fc72481312841625
+    size: 182259813
+  outs:
+  - path: data/processed/df_fire_agg.parquet
+    md5: 7eb2000f3487f63886a61aa7f22c0801
+    size: 161016
+model:
+  cmd: Rscript code/03_model.R
+  deps:
+  - path: code/03_model.R
+    md5: 188638a4f9a8bface98217a42affd8aa
+    size: 4712
+  - path: data/processed/df_fire_agg.parquet
+    md5: 7eb2000f3487f63886a61aa7f22c0801
+    size: 161016
+  outs:
+  - path: data/metrics/df_eval.parquet
+    md5: 21a0d3b5a6ab8cc24885fe1ad4e65508
+    size: 33735
+  - path: data/metrics/df_eval_sum.parquet
+    md5: d8b0951d97dd12425f3a5653a55c2765
+    size: 1883
+  - path: data/metrics/metrics.yaml
+    md5: d29916c37908c1aaaad23fda27f11025
+    size: 561
+  - path: data/metrics/plot_mape_lead.jpg
+    md5: 16462d2fc23015333d154550bdf9610b
+    size: 871292
+  - path: data/metrics/plot_mape_year.jpg
+    md5: cb1629231c1ca73c4681845433d7b14a
+    size: 1154121
+  - path: data/model/model.rds
+    md5: 01170a81b6ad87022ae8d1546730eee1
+    size: 30

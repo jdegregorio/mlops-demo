@@ -1,0 +1,32 @@
+stages:
+  # Import the data from seattle open data portal
+  import_data:
+    cmd: Rscript code/01_import_data.R
+    deps:
+    - code/01_import_data.R
+    outs:
+    - data/raw/data_seattle_fire_911.csv
+  
+  # Prepare data for analysis
+  prepare_data:
+    cmd: Rscript code/02_prepare_data.R
+    deps:
+    - code/02_prepare_data.R
+    - data/raw/data_seattle_fire_911.csv
+    outs:
+    - data/processed/df_fire_agg.parquet
+    
+  # Build and evaluate a model
+  model:
+    cmd: Rscript code/03_model.R
+    deps:
+      - code/03_model.R
+      - data/processed/df_fire_agg.parquet
+    outs:
+      - data/metrics/df_eval.parquet
+      - data/metrics/df_eval_sum.parquet
+      - data/metrics/plot_mape_lead.jpg
+      - data/metrics/plot_mape_year.jpg
+      - data/model/model.rds
+    metrics:
+      - data/metrics/metrics.yaml

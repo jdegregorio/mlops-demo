@@ -1,3 +1,6 @@
 /df_eval.parquet
 /df_eval_sum.parquet
 /plot_mape.jpg
+/plot_mape_lead.jpg
+/plot_mape_year.jpg
+/metrics.yaml
