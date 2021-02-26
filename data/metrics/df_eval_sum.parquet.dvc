@@ -1,4 +1,0 @@
-outs:
-- md5: e7240e3d09a958a97e9738e5a992d903
-  size: 1910
-  path: df_eval_sum.parquet
