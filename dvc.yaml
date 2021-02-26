@@ -25,6 +25,7 @@ stages:
     outs:
       - data/metrics/df_eval.parquet
       - data/metrics/df_eval_sum.parquet
+      - data/metrics/df_eval_sum.html
       - data/metrics/plot_mape_lead.jpg
       - data/metrics/plot_mape_year.jpg
       - data/model/model.rds

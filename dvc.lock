@@ -25,8 +25,8 @@ model:
   cmd: Rscript code/03_model.R
   deps:
   - path: code/03_model.R
-    md5: 188638a4f9a8bface98217a42affd8aa
-    size: 4712
+    md5: 8434b3eab7927630585b69eb8b28131a
+    size: 4874
   - path: data/processed/df_fire_agg.parquet
     md5: 7eb2000f3487f63886a61aa7f22c0801
     size: 161016
@@ -34,6 +34,9 @@ model:
   - path: data/metrics/df_eval.parquet
     md5: 21a0d3b5a6ab8cc24885fe1ad4e65508
     size: 33735
+  - path: data/metrics/df_eval_sum.html
+    md5: adcc618868f5a6bda3cdc615670ec178
+    size: 779043
   - path: data/metrics/df_eval_sum.parquet
     md5: d8b0951d97dd12425f3a5653a55c2765
     size: 1883
