@@ -58,13 +58,6 @@
       "Repository": "CRAN",
       "Hash": "dbb5e436998a7eba5a9d682060533338"
     },
-    "arrow": {
-      "Package": "arrow",
-      "Version": "3.0.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "41517f74f2e340e7ce736dd9bcfbb360"
-    },
     "askpass": {
       "Package": "askpass",
       "Version": "1.1",

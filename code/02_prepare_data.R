@@ -8,7 +8,6 @@ library(tidyverse)
 library(lubridate)
 library(chron)
 library(here)
-library(arrow)
 
 
 # LOAD RAW DATA -----------------------------------------------------------
@@ -121,4 +120,4 @@ df_fire_agg <- df_fire_agg %>%
 
 # WRITE TO DISK -----------------------------------------------------------
 
-write_parquet(df_fire_agg, here("data", "processed", "df_fire_agg.parquet"))
+write_rds(df_fire_agg, here("data", "processed", "df_fire_agg.rds"))

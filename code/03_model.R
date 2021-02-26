@@ -8,7 +8,6 @@
 library(tidyverse)
 library(lubridate)
 library(here)
-library(arrow)
 library(rsample)
 library(yaml)
 library(kableExtra)
@@ -19,7 +18,7 @@ source(here("code", "funs_eval.R"))
 
 # LOAD DATA ---------------------------------------------------------------
 
-df_fire_agg <- read_parquet(here("data", "processed", "df_fire_agg.parquet"))
+df_fire_agg <- read_rds(here("data", "processed", "df_fire_agg.rds"))
 
 
 # CREATE DUMMY MODEL FEATURE SET ------------------------------------------
@@ -157,8 +156,8 @@ df_eval_sum %>%
 write_yaml(ls_metrics, here("data", "metrics", "metrics.yaml"))
 ggsave(here("data", "metrics", "plot_mape_lead.jpg"), plot = p_mape_lead, height = 4, width = 6, dpi = 1000)
 ggsave(here("data", "metrics", "plot_mape_year.jpg"), plot = p_mape_year, height = 4, width = 6, dpi = 1000)
-write_parquet(df_eval, here("data", "metrics", "df_eval.parquet"))
-write_parquet(df_eval_sum, here("data", "metrics", "df_eval_sum.parquet"))
+write_rds(df_eval, here("data", "metrics", "df_eval.rds"))
+write_rds(df_eval_sum, here("data", "metrics", "df_eval_sum.rds"))
 
 
 # FIT MODEL (ALL DATA) ----------------------------------------------------
