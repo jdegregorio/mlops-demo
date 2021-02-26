@@ -11,6 +11,7 @@ library(here)
 library(arrow)
 library(rsample)
 library(yaml)
+library(kableExtra)
 
 # Source dummy model functions
 source(here("code", "funs_eval.R"))
@@ -144,6 +145,13 @@ p_mape_year <- df_eval %>%
     x = "Error Percentage",
     y = "Prediction Year"
   )
+
+# Create html report
+df_eval_sum %>% 
+  kbl() %>%
+  kable_styling() %>%
+  save_kable(here("data", "metrics", "df_eval_sum.html"))
+  
 
 # Save metrics
 write_yaml(ls_metrics, here("data", "metrics", "metrics.yaml"))
