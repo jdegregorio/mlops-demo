@@ -1,0 +1,33 @@
+name: run_pipeline
+on: [push]
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml:latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup R
+        uses: r-lib/actions/setup-r@master
+          with:
+            r-version: '3.6.1'
+            
+      - name: Setup dependencies
+        run: |
+          R -e 'install.packages("renv")' 
+          R -e 'renv::restore()'
+          
+      - name: Run pipeline
+        env: 
+          repo_token: ${{ secrets.GITHUB_TOKEN }} 
+        run: |
+          # Run pipeline
+          dvc repro
+          # Add plots
+          echo "## MAPE Plots" >> report.md
+          cml-publish data/metrics/plot_mape_lead.jpg --md > report.md 
+          cml-publish data/metrics/plot_mape_year.jpg --md > report.md 
+          echo "## Error Summary" >> report.md
+          cml-publish data/metrics/df_eval_sum.html --md > report.md 
+          # Send report
+          cml-send-comment report.md
