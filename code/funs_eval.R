@@ -1,5 +1,5 @@
 evaluate_samples <- function(data_pred, data_test) {
-  
+
   df_eval <-
     bind_cols(data_test, data_pred) %>%
     arrange(date) %>%
@@ -10,7 +10,7 @@ evaluate_samples <- function(data_pred, data_test) {
       error_pct = error_raw / volume_total_actual,
       error_wei = error_raw * weight
     )
-  
-  
+
+
   return(df_eval)
 }

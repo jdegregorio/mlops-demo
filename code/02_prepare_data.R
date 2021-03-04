@@ -95,9 +95,9 @@ df_fire_agg_hour <- df_fire %>%
 # MERGE COMPLETE SERIES ---------------------------------------------------
 
 # Validate complete time series (i.e. no missing dates)
-df_fire_agg <- 
+df_fire_agg <-
   df_fire_agg_total %>%
-  complete(date = full_seq(date, period = 1), fill = list(volume_total = 0)) 
+  complete(date = full_seq(date, period = 1), fill = list(volume_total = 0))
 
 # Join time-based aggregated features
 df_fire_agg <- df_fire_agg %>%

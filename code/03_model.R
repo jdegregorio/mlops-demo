@@ -24,16 +24,16 @@ df_fire_agg <- read_rds(here("data", "processed", "df_fire_agg.rds"))
 # CREATE DUMMY MODEL FEATURE SET ------------------------------------------
 
 # Define simple feature set for dummy model - no features needed
-df_all <- df_fire_agg %>% 
+df_all <- df_fire_agg %>%
   select(date, volume_total_actual = volume_total)
 
 
 # SPLIT DATA --------------------------------------------------------------
 
 splits_rolling <- rolling_origin(
-  df_all, 
-  initial = 365*3, 
-  assess = 7, 
+  df_all,
+  initial = 365*3,
+  assess = 7,
   skip = 25,
   lag = 0,
   cumulative = TRUE
@@ -50,22 +50,22 @@ grid_samples <- splits_rolling %>%
 
 # NO TRAINING REQUIRED - see dummy model functions
 
-# Gets the last day in the training data for use for prediction (i.e. random walk)
+# Gets the last day in the training data for use for prediction (i.e. naive)
 train_dummy <- function(df_train) {
-  
+
   df_train %>%
     arrange(date) %>%
     mutate(volume_total_pred = lag(volume_total_actual, 2)) %>%
     filter(date == max(date)) %>%
     pull(volume_total_pred)
-  
+
 }
 
 # Repeat the last available training observation to predict over window
 predict_dummy <- function(model_dummy, new_data) {
-  
-  tibble(volume_total_pred = rep(model_dummy, nrow(new_data)))
-  
+
+  tibble::tibble(volume_total_pred = rep(model_dummy, nrow(new_data)))
+
 }
 
 
@@ -74,7 +74,7 @@ predict_dummy <- function(model_dummy, new_data) {
 # Make predictions for each sample, then evaluate
 grid_samples <- grid_samples %>%
   mutate(
-    fit= map(data_train, train_dummy),
+    fit = map(data_train, train_dummy),
     data_pred = map2(fit, data_test, predict_dummy),
     data_eval = map2(data_test, data_pred, evaluate_samples)
   )
@@ -120,7 +120,7 @@ ls_metrics <- list(
 )
   
 # Plot MAPE by forecast lead
-p_mape_lead <- 
+p_mape_lead <-
   df_eval %>%
   ggplot(aes(y = fct_rev(as_factor(pred_lead)), x = error_pct)) +
   ggridges::geom_density_ridges(alpha = 0.25, fill = "black") +
@@ -133,8 +133,8 @@ p_mape_lead <-
   )
 
 # Plot MAPE by forecast year
-p_mape_year <- df_eval %>% 
-  mutate(year = year(date)) %>% 
+p_mape_year <- df_eval %>%
+  mutate(year = year(date)) %>%
   ggplot(aes(y = fct_rev(as_factor(year)), x = error_pct)) +
   ggridges::geom_density_ridges(alpha = 0.25, fill = "black") +
   scale_x_continuous(labels = scales::percent, limits = c(-0.75, 0.75)) +
@@ -145,19 +145,18 @@ p_mape_year <- df_eval %>%
     y = "Prediction Year"
   )
 
-# # Create html report
-# df_eval_sum %>% 
-#   kbl() %>%
-#   kable_styling() %>%
-#   save_kable(here("data", "metrics", "df_eval_sum.html"))
-  
-
 # Save metrics
 write_yaml(ls_metrics, here("data", "metrics", "metrics.yaml"))
-ggsave(here("data", "metrics", "plot_mape_lead.jpg"), plot = p_mape_lead, height = 4, width = 6, dpi = 1000)
-ggsave(here("data", "metrics", "plot_mape_year.jpg"), plot = p_mape_year, height = 4, width = 6, dpi = 1000)
 write_rds(df_eval, here("data", "metrics", "df_eval.rds"))
 write_rds(df_eval_sum, here("data", "metrics", "df_eval_sum.rds"))
+ggsave(
+  here("data", "metrics", "plot_mape_lead.jpg"),
+  plot = p_mape_lead, height = 4, width = 6, dpi = 1000
+)
+ggsave(
+  here("data", "metrics", "plot_mape_year.jpg"),
+  plot = p_mape_year, height = 4, width = 6, dpi = 1000
+)
 
 
 # FIT MODEL (ALL DATA) ----------------------------------------------------
