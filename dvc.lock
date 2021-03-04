@@ -12,8 +12,8 @@ prepare_data:
   cmd: Rscript code/02_prepare_data.R
   deps:
   - path: code/02_prepare_data.R
-    md5: 73c5ea132b98f95732cbaad582556838
-    size: 3076
+    md5: a46fdad726a2919389044cb16cc6f9c1
+    size: 3074
   - path: data/raw/data_seattle_fire_911.csv
     md5: a51eb0ccdf0eb2c5fc72481312841625
     size: 182259813
@@ -25,8 +25,8 @@ model:
   cmd: Rscript code/03_model.R
   deps:
   - path: code/03_model.R
-    md5: ed3e00fc345c5a78ab9e841558e2193b
-    size: 4834
+    md5: cd8608594e8d1ae612952875e6ebc6aa
+    size: 4701
   - path: data/processed/df_fire_agg.rds
     md5: b9805c841eb3720c01d4eb2b1dc9ae72
     size: 936322
@@ -34,9 +34,6 @@ model:
   - path: data/metrics/df_eval.rds
     md5: 13f1019ae0aa267d213598640fe670db
     size: 107360
-  - path: data/metrics/df_eval_sum.html
-    md5: adcc618868f5a6bda3cdc615670ec178
-    size: 779043
   - path: data/metrics/df_eval_sum.rds
     md5: 1b41fe2fc2db3c0a0931c9d54d0cc23e
     size: 461
