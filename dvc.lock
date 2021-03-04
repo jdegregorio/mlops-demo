@@ -1,13 +1,3 @@
-import_data:
-  cmd: Rscript code/01_import_data.R
-  deps:
-  - path: code/01_import_data.R
-    md5: f876aa389f45d939bd1de33ec25f8e74
-    size: 529
-  outs:
-  - path: data/raw/data_seattle_fire_911.csv
-    md5: a51eb0ccdf0eb2c5fc72481312841625
-    size: 182259813
 prepare_data:
   cmd: Rscript code/02_prepare_data.R
   deps:
