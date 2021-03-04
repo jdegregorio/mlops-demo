@@ -32,7 +32,7 @@ df_all <- df_fire_agg %>%
 
 splits_rolling <- rolling_origin(
   df_all,
-  initial = 365*3,
+  initial = 365 * 3,
   assess = 7,
   skip = 25,
   lag = 0,
