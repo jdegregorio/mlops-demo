@@ -35,5 +35,5 @@ jobs:
         run: R CMD INSTALL .
 
       - name: Lint
-        run: lintr::lint_package()
+        run: lintr::lint_dir('./code')
         shell: Rscript {0}
