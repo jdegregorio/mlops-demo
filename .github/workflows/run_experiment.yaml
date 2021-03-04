@@ -1,4 +1,4 @@
-name: run_pipeline
+name: run_experiment
 on: push
 jobs:
   run:

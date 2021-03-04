@@ -1,12 +1,5 @@
 stages:
-  # Import the data from seattle open data portal
-  import_data:
-    cmd: Rscript code/01_import_data.R
-    deps:
-    - code/01_import_data.R
-    outs:
-    - data/raw/data_seattle_fire_911.csv
-  
+
   # Prepare data for analysis
   prepare_data:
     cmd: Rscript code/02_prepare_data.R
@@ -15,7 +8,7 @@ stages:
     - data/raw/data_seattle_fire_911.csv
     outs:
     - data/processed/df_fire_agg.rds
-    
+
   # Build and evaluate a model
   model:
     cmd: Rscript code/03_model.R
