@@ -2,7 +2,7 @@ name: run_experiment
 on: push
 jobs:
   run:
-    runs-on: [ubuntu-latest]
+    runs-on: [ubuntu--20.04]
     container: docker://dvcorg/cml:latest
     steps:
       - uses: actions/checkout@v2
