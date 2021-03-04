@@ -12,9 +12,9 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
       - name: Install dependencies
         run: |
-          install.packages(c("remotes"))
-          remotes::install_cran("lintr")
-        shell: Rscript {0}
+          sudo apt-get install libcurl4-openssl-dev
+          sudo apt-get install libssl-dev
+          sudo apt-get install libxml2-dev
+          R -e 'install.packages("lintr")' 
       - name: Lint
-        run: lintr::lint_dir('./code')
-        shell: Rscript {0}
+        run: R -e 'lintr::lint_dir("./code")'

@@ -20,11 +20,11 @@ jobs:
           R -e 'install.packages("renv")' 
           R -e 'renv::restore()'
           
-      - name: Run pipeline
+      - name: Run experiment
         env: 
           repo_token: ${{ secrets.GITHUB_TOKEN }} 
         run: |
-          # Run pipeline
+          # Run experiment
           dvc repro
           # Add plots
           echo "## MAPE Plots" >> report.md
